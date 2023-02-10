@@ -1,0 +1,273 @@
+<div class="container">
+  <legend>Job Portal</legend>
+  <div class="row" >
+   
+    <!-- <div class="col col-md-20 " style="overflow-y: scroll; max-height: 100vh"> -->
+
+      <form [formGroup]="jobForm" (ngSubmit)="save()">
+        <!-- <div class="col-md-4"> -->
+     
+        <label class="form-label">Title</label><br>
+        <!-- <select class="form-select" formControlName="contactType" aria-label="Default select example">
+          <option value="email">Mr</option>
+          <option value="phone">Ms</option>
+          <option value="phone">Mrs</option>
+          <option value="phone">Dr</option>
+        </select> -->
+
+      <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" optionValue="name"></p-dropdown>  
+        <pre></pre>
+       <!-- </div> -->
+        <!-- <div class="mb-3"> -->
+          <!-- <div class="col col-md-3" style="overflow: auto; max-width: 35vh;" > -->
+              <!-- <div class="col"> -->
+            
+         
+          <!-- <label for="firstName" class="form-label">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            formControlName="firstName"
+          /> -->
+          
+            <span class="p-float-label">
+              <input id="firstName" type="text" formCotrolName="firstName" pInputText class="form-control">
+              <label for="firstName" class="form-label">FirstName</label>
+            </span>
+<!-- 
+        <div class="alert alert-danger" *ngIf="
+          firstName?.invalid && (firstName?.touched || firstName?.dirty)
+        ">
+            <div *ngIf="firstName?.errors?.['required']">
+                First Name can't be emtpy
+            </div> -->
+        
+
+        <!-- </div> -->
+        <pre></pre>
+          <!-- <div class="mb-3"> -->
+            <!-- <div class="col"> -->
+          
+            <!-- <label for="lastName" class="form-label">Middle Name</label>
+            <input type="text" class="form-control" id="MiddleName" formControlName="MiddleName" />
+          </div> -->
+          <span class="p-float-label">
+            <input id="float-input" type="text" pInputText class="form-control">
+            <label for="float-input" class="form-label">MiddleName</label>
+          </span>
+          <pre></pre>
+
+        <!-- <div class="mb-3">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            formControlName="lastName"
+          />
+        </div> -->
+          <span class="p-float-label">
+            <input id="lastName" type="text" pInputText class="form-control">
+            <label for="lastName" class="form-label">LastName</label>
+          </span>
+
+        <!-- </div> -->
+        <!-- <div class="mb-3" formGroupName="contacts">
+          <div class="row">
+            <div class="col col-md-4 offset-md-4">
+              <div class="mb-3">
+                <label class="form-label">Gender</label> -->
+                <!-- <select
+                  class="form-select"
+                  formControlName="contactType"
+                  aria-label="Default select example"
+                >
+                  <option value="-1">Gender</option>
+                  <option value="email">Male</option>
+                  <option value="phone">Female</option>
+                </select> -->
+                <!-- <p-dropdown [options]="gender" [(ngModel)]="selectedGender" optionLabel="gender1"></p-dropdown> -->
+
+                <!-- <div class="alert alert-danger" *ngIf="
+                  contactType?.invalid &&
+                	(contactType?.touched || contactType?.dirty)
+                  ">
+                    <div *ngIf="contactType?.errors?.['emailOrPhoneRequired']">
+                        Gender needs to selected
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <div class="row">
+            <div class="col col-md-6">
+             
+                <!-- <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  formControlName="email"
+                /> -->
+                <br>
+                
+                <span>Email</span>
+                  <span class="p-float-label">
+                    <input id="email" type="text" formCotrolName="email" pInputText class="form-control" placeholder="abc@xyz.com">
+                    <label for="email" class="form-label"></label>
+                  </span>
+              
+            </div>
+            <div class="col col-md-6">
+              <div class="mb-3">
+                <!-- <label for="phone" class="form-label">Phone</label>
+                <input
+                  type=""
+                  class="form-control"
+                  id="phone"
+                  formControlName="phone"
+                /> -->
+              <div class="p-grid p-fluid">
+                <div class="p-col-12 p-md-6 p-lg-4">
+                  <span>Mobile</span>
+                  <p-inputMask mask="999-999-9999" [(ngModel)]="val1" placeholder="999-999-9999" ></p-inputMask>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3" formArrayName="skills">
+          <div class="row">
+            <div class="col col-md-4 offset-md-4">
+              <button
+                type="button"
+                (click)="addASkillFormGroup()"
+                class="btn btn-primary"
+              >
+                Add Address
+              </button>
+            </div>
+          </div>
+          <ng-container
+            *ngFor="let skillForm of skillsForms.controls; let i = index"
+          >
+            <div class="row" [formGroupName]="i">
+              <div class="col col-md-5">
+                <div class="mb-3">
+                  <label [for]="'address1' + i" class="form-label"
+                    >Address first line</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    [id]="'address1' + i"
+                    formControlName="address1"
+                  />
+                </div>
+              </div>
+              <div class="col col-md-5  ">
+                <div class="mb-3">
+                  <label [for]="'address2' + i" class="form-label">Address second line</label>
+                  <input type="text" class="form-control" [id]="'address2' + i" formControlName="address2" />
+                </div>
+              </div>
+
+              <div class="col col-md-2">
+                <div class="mb-2">
+                  <label [for]="'state' + i" class="form-label">City</label>
+                  <input type="text" class="form-control" [id]="'city' + i" formControlName="city" />
+                </div>
+              </div>
+              
+              <div class="col col-md-2">
+                <div class="mb-2">
+                  <label [for]="'state' + i" class="form-label"
+                    >State</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    [id]="'state' + i"
+                    formControlName="state"
+                  />
+                </div>
+              </div>
+
+                <div class="col col-md-2">
+                  <div class="mb-2">
+                    <label [for]="'pincode' + i" class="form-label">Pincode</label>
+                    <input type="number" class="form-control" [id]="'pincode' + i" formControlName="pincode" />
+                  </div>
+                </div>
+
+                <div class="col col-md-2">
+                  <div class="mb-2">
+                    <label [for]="'country' + i" class="form-label">Country</label>
+                    <input type="text" class="form-control" [id]="'country' + i" formControlName="country" />
+                  </div>
+                </div>
+
+              <div class="col col md-2">
+                <button
+                  class="btn btn-danger mt-4"
+                  type="button"
+                  (click)="removeSkillFormGroup(i)"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+            
+          </ng-container>
+        </div>
+        <div class="p-fluid p-grid p-formgrid">
+          
+            <label for="basic">Date of Birth</label>
+            <p-calendar inputId="basic" [(ngModel)]="date1"></p-calendar>
+          </div>
+          <pre></pre>
+          
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <br>
+        <br>
+        <button type="button" class="btn btn-primary" (click)="sampleSetValues()">
+            From server
+        </button>
+        
+      <!-- </form> -->
+    <!-- </div> -->
+    <pre></pre>
+    <!-- <div class="col col-md-4">
+      <div style="position: fixed">{{ preview }}</div>
+    </div> -->
+    <!-- <div>
+      <button
+	type="button"
+	class="btn btn-outline-secondary"
+	ngbPopover="Employee id can't be empty"
+	triggers="mouseenter:mouseleave"
+	popoverTitle="Pop title"
+>
+	Employee id
+</button>
+    </div> -->
+  <!-- </div>
+</div> -->
+
+<!-- <div class="row">
+  <div class="col">
+    <div ngbDropdown class="col col-md-12 ">
+      <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+        Gender
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem>Male</button>
+        <button ngbDropdownItem>Female</button>
+        <button ngbDropdownItem>Other</button>
+      </div>
+    </div>
+  </div>
+   -->
+ 
